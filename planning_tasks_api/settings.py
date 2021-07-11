@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ywnvd46qu@p9825uizv@$x@0_d*y&b%8u5!dh7#x)976f&%4&e'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG", cast=bool, default=True)
@@ -50,7 +50,8 @@ PROJECT_APPS = [
     'apps.tasks_planning',
     'apps.channels',
     'apps.bot_user',
-    'apps.contacts'
+    'apps.contacts',
+    'apps.yandex_schedule',
 ]
 
 INSTALLED_APPS += PROJECT_APPS
@@ -181,3 +182,7 @@ CACHES = {
 }
 
 SELECT2_CACHE_BACKEND = "default"
+
+LOGGER_LEVEL = env.int('LOGGER_LEVEL')
+YANDEX_SCHEDULE_TOKEN = env('YANDEX_RASP_TOKEN')
+YANDEX_RASP_URL = env('YANDEX_RASP_URL')

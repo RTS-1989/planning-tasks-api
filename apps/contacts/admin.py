@@ -7,7 +7,7 @@ from apps.contacts.models import Phone, Telegram
 class PhoneAdmin(admin.ModelAdmin):
     list_display = ['bot_user', 'international', 'local_format', 'e164', 'is_active']
     list_filter = ['is_active']
-    readonly_fields = ['international', 'local_format', "e164", 'bot_user', 'raw_phone_number']
+    readonly_fields = ['international', 'local_format', "e164"]
     search_fields = 'e164', 'international', 'local_format', 'raw_phone_number'
 
 
