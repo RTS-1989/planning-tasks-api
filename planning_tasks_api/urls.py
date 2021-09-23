@@ -21,12 +21,20 @@ from rest_framework.routers import DefaultRouter
 from apps.tasks_planning.views import PlansViewSet
 from apps.bot_user.views import BotUserViewSet
 from apps.contacts.views import PhoneViewSet, TelegramViewSet
+from apps.yandex_schedule.views import CityViewSet, TransportTypeViewSet, \
+    StationTypeViewSet, StationViewSet, RegionViewSet, CountryViewSet
 
 api = DefaultRouter()
 api.register('plans', PlansViewSet)
 api.register('phones', PhoneViewSet)
 api.register('telegrams', TelegramViewSet)
 api.register('bot_users', BotUserViewSet)
+api.register('yandex_schedule_city', CityViewSet)
+api.register('yandex_schedule_transport_type', TransportTypeViewSet)
+api.register('yandex_schedule_station_type', StationTypeViewSet)
+api.register('yandex_schedule_station', StationViewSet, basename='queryset')
+api.register('yandex_schedule_regions', RegionViewSet)
+api.register('yandex_schedule_countries', CountryViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -5,6 +5,10 @@ class City(models.Model):
     name = models.CharField(verbose_name='Название города', max_length=100)
     yandex_city_code = models.CharField(verbose_name='Код города Яндекса', max_length=100,
                                         unique=True)
+    region = models.ForeignKey('Region', verbose_name='Регион', on_delete=models.RESTRICT,
+                               null=True, blank=True)
+    country = models.ForeignKey('Country', verbose_name='Страна', on_delete=models.RESTRICT,
+                                null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -49,3 +53,29 @@ class Station(models.Model):
     class Meta:
         verbose_name = 'Станция'
         verbose_name_plural = 'Станции'
+
+
+class Region(models.Model):
+    name = models.CharField(verbose_name="Наименование региона", max_length=100)
+    yandex_region_code = models.CharField(verbose_name='Код региона Яндекса', max_length=50,
+                                          unique=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Регион"
+        verbose_name_plural = "Регионы"
+
+
+class Country(models.Model):
+    name = models.CharField(verbose_name="Наименование страны", max_length=100)
+    yandex_country_code = models.CharField(verbose_name='Код страны Яндекса', max_length=50,
+                                           unique=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Страна"
+        verbose_name_plural = "Страны"

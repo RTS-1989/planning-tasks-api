@@ -1,22 +1,11 @@
-from django.http import HttpRequest
 from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import DjangoModelPermissions, BasePermission
 from rest_framework import filters
 
 from .models import Task, TaskCategory
 from .serializers import TaskSerializer
-
-
-class CanCreate(BasePermission):
-    def has_permission(self, request: HttpRequest, view):
-        return request.method == "POST"
-
-
-class CanRead(BasePermission):
-    def has_permission(self, request: HttpRequest, view):
-        return request.method == "GET"
+from services.tools.custom_permissions import CanRead, CanCreate
 
 
 class PlansViewSet(ModelViewSet):

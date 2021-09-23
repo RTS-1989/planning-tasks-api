@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'django_filters',
     'rest_framework.authtoken',
 ]
 
@@ -155,6 +156,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'PAGE_SIZE': 100,
     'DEFAULT_PAGINATION_CLASS': 'tools.pagination.Pagination',
     'DEFAULT_AUTHENTICATION_CLASSES': [
